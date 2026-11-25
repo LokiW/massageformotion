@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Client Intake Forms</title>
+  <meta name="description" content="New client intake forms for Massage For Motion: health data consent, treatment consent, health history, and treatment preferences.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Massage For Motion</a>
+    <nav aria-label="Main"><a href="services.html">Services</a><a href="rates.html">Rates</a><a href="locations.html">Locations</a><a href="about.html">About</a><a class="btn" href="book.html">Book</a></nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="print-only">
+    <h1>Massage For Motion — Client Intake Forms</h1>
+    <p>Loki, LMT · loki.for.motion@gmail.com</p>
+  </div>
+
+  <section class="card intro-card">
+    <h1>New client forms</h1>
+    <p class="lede">Four short forms help me make sure massage is safe for you and that your session matches what you want. Plan on about 10 minutes.</p>
+    <p>Prefer paper? Choose that option in step 1 and nothing will be sent. I'll bring printed forms to your appointment. You can also <a href="#" id="print-link">print blank forms</a>.</p>
+    <ol class="progress" id="progress" aria-label="Form progress">
+      <li data-step="1">1. Health data consent</li>
+      <li data-step="2">2. Consent to treatment</li>
+      <li data-step="3">3. Health history</li>
+      <li data-step="4">4. Preferences &amp; areas</li>
+    </ol>
+  </section>
+
+  <form id="intake" novalidate>
+    <!-- spam trap: real people never see or fill this -->
+    <div class="hp" aria-hidden="true"><label>Leave blank <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <!-- ===================== 1. MHMDA CONSENT ===================== -->
+    <fieldset class="step card" data-step="1">
+      <legend><h2>1. Consent to collect consumer health data</h2></legend>
+      <p class="hint">Required by Washington's My Health My Data Act. Full details are in my <a href="privacy.html">Consumer Health Data Privacy Policy</a>.</p>
+
+      <h3>What I collect</h3>
+      <p>Your name and contact details, your address (for home visits), your health history, pregnancy or lactation information if relevant, and your treatment preferences, including which body areas you consent to have massaged.</p>
+
+      <h3>Why</h3>
+      <p>Only to decide whether massage is safe for you, plan your treatment, and keep a record of your care. I never use it for marketing or advertising.</p>
+
+      <h3>Where it is stored and who sees it</h3>
+      <p>Your answers are saved in a private Google account that only I can access. Google stores the data for me but may not use it for its own purposes. I do not sell your health data or share it with anyone else, unless the law requires it.</p>
+
+      <h3>Your rights</h3>
+      <p>You can see what I hold about you, ask me to delete it, or withdraw this consent at any time by emailing <a href="mailto:loki.for.motion@gmail.com">loki.for.motion@gmail.com</a>. Withdrawing consent won't affect your ability to book. We'll just use paper forms.</p>
+
+      <div class="field" role="radiogroup" aria-labelledby="consent-q">
+        <span class="label" id="consent-q">Your choice</span>
+        <label class="radio"><input type="radio" name="dataConsent" value="electronic" required> I consent to Massage For Motion collecting and storing my health data electronically, as described above.</label>
+        <label class="radio"><input type="radio" name="dataConsent" value="paper"> I do not consent to electronic storage. I'll fill out paper forms at my appointment.</label>
+      </div>
+
+      <div class="signature" id="consent-signature">
+        <div class="row">
+          <div class="field"><label for="c-name">Full name</label><input type="text" id="c-name" name="consentName" autocomplete="name" required></div>
+          <div class="field"><label for="c-date">Date</label><input type="date" id="c-date" name="consentDate" required></div>
+        </div>
+        <div class="field"><label for="c-guardian">Parent or guardian name <span class="hint">Only if the client is under 18</span></label><input type="text" id="c-guardian" name="consentGuardian"></div>
+        <label class="check"><input type="checkbox" name="consentSigned" value="yes" required> Typing my name above serves as my signature.</label>
+      </div>
+
+      <div class="note hidden" id="paper-note" role="status">
+        <strong>No problem.</strong> Nothing has been sent. Please mention that you'd like paper forms when you book, and I'll bring them to your appointment. You can close this page.
+      </div>
+
+      <div class="step-nav"><span></span><button type="button" class="btn" data-next>Continue</button></div>
+    </fieldset>
+
+    <!-- ===================== 2. TREATMENT CONSENT ===================== -->
+    <fieldset class="step card hidden" data-step="2">
+      <legend><h2>2. Informed consent &amp; release</h2></legend>
+      <p class="hint">Please check each statement.</p>
+      <ul class="agree-list">
+        <li><label class="check"><input type="checkbox" name="tc_consent" value="yes" required> I give permission to receive massage from Loki, LMT, of Massage For Motion LLC.</label></li>
+        <li><label class="check"><input type="checkbox" name="tc_notMedical" value="yes" required> I understand massage is not a substitute for conventional (Western) medical care or prescribed medications.</label></li>
+        <li><label class="check"><input type="checkbox" name="tc_noDiagnose" value="yes" required> I understand a massage therapist cannot diagnose, give a prognosis, or prescribe. I'll see a healthcare provider for those.</label></li>
+        <li><label class="check"><input type="checkbox" name="tc_cleared" value="yes" required> If I have a medical condition, my healthcare provider has cleared me to receive massage.</label></li>
+        <li><label class="check"><input type="checkbox" name="tc_risks" value="yes" required> I understand the risks of massage, including minor bruising, short-term muscle soreness, and aggravating an injury I didn't know about.</label></li>
+        <li><label class="check"><input type="checkbox" name="tc_disclose" value="yes" required> I will tell my therapist about all medical conditions and medications, and about any changes, so they can tell whether massage is safe for me.</label></li>
+        <li><label class="check"><input type="checkbox" name="tc_communicate" value="yes" required> I'm responsible for speaking up about pain or discomfort during the session. Pressure and technique will be adjusted, or the session stopped, whenever I ask.</label></li>
+        <li><label class="check"><input type="checkbox" name="tc_questions" value="yes" required> I can ask questions at any time and will have the chance to ask them before my session begins.</label></li>
+        <li><label class="check"><input type="checkbox" name="tc_professional" value="yes" required> I understand this is therapeutic massage only. Any sexual remark or request ends the session immediately, and full payment is still due.</label></li>
+        <li><label class="check"><input type="checkbox" name="tc_release" value="yes" required> Having understood the above, I release Massage For Motion LLC and its therapist from liability for these known risks. This does not cover negligence.</label></li>
+      </ul>
+
+      <div class="signature">
+        <div class="row">
+          <div class="field"><label for="t-name">Full name</label><input type="text" id="t-name" name="treatName" autocomplete="name" required></div>
+          <div class="field"><label for="t-date">Date</label><input type="date" id="t-date" name="treatDate" required></div>
+        </div>
+        <div class="field"><label for="t-guardian">Parent or guardian name <span class="hint">Only if the client is under 18</span></label><input type="text" id="t-guardian" name="treatGuardian"></div>
+        <label class="check"><input type="checkbox" name="treatSigned" value="yes" required> Typing my name above serves as my signature.</label>
+      </div>
+
+      <div class="step-nav"><button type="button" class="btn secondary" data-back>Back</button><button type="button" class="btn" data-next>Continue</button></div>
+    </fieldset>
+
+    <!-- ===================== 3. HEALTH HISTORY ===================== -->
+    <fieldset class="step card hidden" data-step="3">
+      <legend><h2>3. Health history</h2></legend>
+      <p class="hint">This tells me whether to adjust or avoid certain techniques. Answer as fully as you're comfortable with.</p>
+
+      <h3>About you</h3>
+      <div class="row">
+        <div class="field"><label for="h-name">Full name</label><input type="text" id="h-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="h-dob">Date of birth</label><input type="date" id="h-dob" name="dob" autocomplete="bday" required></div>
+        <div class="field"><label for="h-phone">Phone</label><input type="tel" id="h-phone" name="phone" autocomplete="tel" required></div>
+        <div class="field"><label for="h-email">Email</label><input type="email" id="h-email" name="email" autocomplete="email" required></div>
+        <div class="field"><label for="h-ec">Emergency contact name</label><input type="text" id="h-ec" name="emergencyName"></div>
+        <div class="field"><label for="h-ecp">Emergency contact phone</label><input type="tel" id="h-ecp" name="emergencyPhone"></div>
+      </div>
+      <div class="field"><label for="h-occ">Occupation and regular activities <span class="hint">e.g. desk work, climbing, aerial, running</span></label><input type="text" id="h-occ" name="activities"></div>
+
+      <h3>Right now</h3>
+      <div class="field"><label for="h-pain">Current pain, injuries, or problem areas <span class="hint">Where, how long, and what caused it, if known</span></label><textarea id="h-pain" name="currentPain"></textarea></div>
+      <div class="field"><label for="h-surg">Surgeries or injuries in the past 2 years <span class="hint">What and when</span></label><textarea id="h-surg" name="recentSurgery"></textarea></div>
+      <div class="field"><label for="h-care">Are you currently seeing a healthcare provider for anything? <span class="hint">Doctor, physical therapist, chiropractor, etc.</span></label><textarea id="h-care" name="currentCare"></textarea></div>
+      <div class="field"><label for="h-meds">Medications and supplements <span class="hint">Especially blood thinners, pain relievers, muscle relaxants, or steroids</span></label><textarea id="h-meds" name="medications"></textarea></div>
+      <div class="field"><label for="h-allergy">Allergies or sensitivities <span class="hint">Oils, lotions, nuts, latex, scents, detergents</span></label><input type="text" id="h-allergy" name="allergies"></div>
+
+      <h3>Do any of these apply to you, now or in the past?</h3>
+      <p class="hint">Check all that apply.</p>
+      <div class="checks-grid">
+        <label class="check"><input type="checkbox" name="conditions" value="Fever, cold, flu, or other current illness"> Fever, cold, flu, or other current illness</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Contagious skin condition"> Contagious skin condition (e.g. ringworm, scabies, impetigo)</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Open wounds, rash, burns, or sunburn"> Open wounds, rash, burns, or sunburn</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Blood clots / DVT"> Blood clots or deep vein thrombosis (DVT)</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Varicose veins"> Varicose veins</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Bleeding disorder or easy bruising"> Bleeding disorder or bruise easily</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Heart condition or pacemaker"> Heart condition or pacemaker</label>
+        <label class="check"><input type="checkbox" name="conditions" value="High blood pressure"> High blood pressure</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Low blood pressure or fainting"> Low blood pressure or fainting</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Stroke"> Stroke</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Diabetes"> Diabetes</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Numbness, tingling, or neuropathy"> Numbness, tingling, or neuropathy</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Osteoporosis"> Osteoporosis</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Fracture, sprain, or strain in last 6 weeks"> Fracture, sprain, or strain in the last 6 weeks</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Joint replacement or metal hardware"> Joint replacement or metal hardware</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Herniated disc or sciatica"> Herniated disc or sciatica</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Arthritis"> Arthritis</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Fibromyalgia or autoimmune condition"> Fibromyalgia or autoimmune condition</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Cancer (current or past)"> Cancer, current or past</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Lymph node removal or lymphedema"> Lymph node removal or lymphedema</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Kidney or liver disease"> Kidney or liver disease</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Seizures or epilepsy"> Seizures or epilepsy</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Headaches or migraines"> Headaches or migraines</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Jaw pain / TMJ"> Jaw pain or TMJ</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Hernia"> Hernia</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Abdominal aortic aneurysm"> Abdominal aortic aneurysm</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Asthma, COPD, or other lung condition"> Asthma, COPD, or other lung condition</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Lingering breathing issues after illness"> Lingering breathing issues after illness (e.g. long COVID)</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Digestive condition"> Digestive condition (e.g. IBS, Crohn's)</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Breast or chest implants or surgery"> Breast or chest implants or surgery</label>
+        <label class="check"><input type="checkbox" name="conditions" value="Recent injection or vaccination"> Injection or vaccination in the last week</label>
+      </div>
+      <div class="field"><label for="h-cond">Details on anything checked, or anything else I should know</label><textarea id="h-cond" name="conditionDetails"></textarea></div>
+
+      <h3>Pregnancy, postpartum &amp; lactation</h3>
+      <div class="field">
+        <span class="label">Which applies to you right now?</span>
+        <label class="check"><input type="checkbox" name="repro" value="pregnant" data-toggle="pregnancy-q"> Currently pregnant</label>
+        <label class="check"><input type="checkbox" name="repro" value="postpartum" data-toggle="postpartum-q"> Gave birth in the past year</label>
+        <label class="check"><input type="checkbox" name="repro" value="lactating" data-toggle="lactation-q"> Breastfeeding, chestfeeding, or pumping</label>
+        <span class="hint">Leave these blank if none apply.</span>
+      </div>
+
+      <div class="conditional hidden" id="pregnancy-q">
+        <div class="row">
+          <div class="field"><label for="p-weeks">Weeks pregnant</label><input type="number" id="p-weeks" name="pregWeeks" min="1" max="45"></div>
+          <div class="field"><label for="p-due">Due date</label><input type="date" id="p-due" name="pregDue"></div>
+        </div>
+        <span class="label">Check any that apply to this pregnancy</span>
+        <div class="checks-grid">
+          <label class="check"><input type="checkbox" name="pregFlags" value="High-risk pregnancy"> Considered high-risk</label>
+          <label class="check"><input type="checkbox" name="pregFlags" value="Preeclampsia or high blood pressure"> Preeclampsia or high blood pressure</label>
+          <label class="check"><input type="checkbox" name="pregFlags" value="Gestational diabetes"> Gestational diabetes</label>
+          <label class="check"><input type="checkbox" name="pregFlags" value="Placenta previa or abruption"> Placenta previa or abruption</label>
+          <label class="check"><input type="checkbox" name="pregFlags" value="Vaginal bleeding"> Vaginal bleeding</label>
+          <label class="check"><input type="checkbox" name="pregFlags" value="Sudden swelling"> Sudden swelling of hands, face, or legs</label>
+          <label class="check"><input type="checkbox" name="pregFlags" value="Preterm labor (now or history)"> Preterm labor, now or in the past</label>
+          <label class="check"><input type="checkbox" name="pregFlags" value="Severe nausea / hyperemesis"> Severe nausea (hyperemesis)</label>
+        </div>
+        <div class="field"><label for="p-ok">Has your prenatal care provider said massage is OK? <span class="hint">Required if any of the above apply</span></label>
+          <select id="p-ok" name="pregProviderOk"><option value="">Choose…</option><option>Yes</option><option>Haven't asked</option><option>They advised against it</option></select></div>
+      </div>
+
+      <div class="conditional hidden" id="postpartum-q">
+        <div class="row">
+          <div class="field"><label for="pp-date">Birth date</label><input type="date" id="pp-date" name="birthDate"></div>
+          <div class="field"><label for="pp-type">Type of birth</label>
+            <select id="pp-type" name="birthType"><option value="">Choose…</option><option>Vaginal</option><option>Cesarean</option><option>Prefer not to say</option></select></div>
+        </div>
+        <div class="field"><label for="pp-notes">Complications, healing concerns, or clearance from your provider</label><textarea id="pp-notes" name="postpartumNotes"></textarea></div>
+      </div>
+
+      <div class="conditional hidden" id="lactation-q">
+        <span class="label">Check any you're experiencing now</span>
+        <div class="checks-grid">
+          <label class="check"><input type="checkbox" name="lactFlags" value="Engorgement"> Engorgement</label>
+          <label class="check"><input type="checkbox" name="lactFlags" value="Clogged ducts"> Clogged ducts or lumps</label>
+          <label class="check"><input type="checkbox" name="lactFlags" value="Mastitis signs"> Redness, heat, fever, or flu-like feeling (possible mastitis)</label>
+          <label class="check"><input type="checkbox" name="lactFlags" value="Nipple pain or damage"> Nipple pain or damage</label>
+          <label class="check"><input type="checkbox" name="lactFlags" value="Low or high supply concerns"> Supply concerns</label>
+        </div>
+        <div class="field"><label for="l-ibclc">Lactation consultant or provider you're working with <span class="hint">Optional</span></label><input type="text" id="l-ibclc" name="lactProvider"></div>
+      </div>
+
+      <div class="signature">
+        <label class="check"><input type="checkbox" name="historyAccurate" value="yes" required> This information is accurate to the best of my knowledge, and I'll tell my therapist about any changes before future sessions.</label>
+      </div>
+
+      <div class="step-nav"><button type="button" class="btn secondary" data-back>Back</button><button type="button" class="btn" data-next>Continue</button></div>
+    </fieldset>
+
+    <!-- ===================== 4. PREFERENCES & AREA CONSENT ===================== -->
+    <fieldset class="step card hidden" data-step="4">
+      <legend><h2>4. Treatment preferences &amp; consent for specific areas</h2></legend>
+
+      <h3>Goals</h3>
+      <div class="field"><label for="g-goals">What would you like to get out of massage?</label><textarea id="g-goals" name="goals" placeholder="e.g. recover from shoulder strain, loosen up for training, relieve desk-work neck tension"></textarea></div>
+      <div class="field"><label for="g-focus">Areas you'd most like worked on</label><input type="text" id="g-focus" name="focusAreas"></div>
+
+      <h3>Pressure</h3>
+      <div class="field" role="radiogroup" aria-label="Pressure preference">
+        <label class="radio"><input type="radio" name="pressure" value="Light"> Light</label>
+        <label class="radio"><input type="radio" name="pressure" value="Medium"> Medium</label>
+        <label class="radio"><input type="radio" name="pressure" value="Firm"> Firm</label>
+        <label class="radio"><input type="radio" name="pressure" value="Deep"> Deep</label>
+        <label class="radio"><input type="radio" name="pressure" value="Not sure"> Not sure. Let's figure it out together.</label>
+      </div>
+
+      <h3>Areas NOT to massage</h3>
+      <p class="hint">Check any you'd like me to avoid completely.</p>
+      <div class="checks-grid">
+        <label class="check"><input type="checkbox" name="avoid" value="Scalp"> Scalp</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Face"> Face</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Front of neck"> Front of neck</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Back of neck"> Back of neck</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Shoulders"> Shoulders</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Upper chest / pecs"> Upper chest / pecs (not breast tissue)</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Upper back"> Upper back</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Lower back"> Lower back</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Arms"> Arms</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Hands"> Hands</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Hips"> Hips</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Front of thighs"> Front of thighs</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Back of thighs"> Back of thighs</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Inner thighs"> Inner thighs</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Calves"> Calves</label>
+        <label class="check"><input type="checkbox" name="avoid" value="Feet"> Feet</label>
+      </div>
+      <div class="field"><label for="a-other">Anything else to avoid</label><input type="text" id="a-other" name="avoidOther"></div>
+
+      <h3>Consent for sensitive areas</h3>
+      <p>These areas are only worked on with your explicit permission. Please choose one option for each. <strong>Genitals are always covered and never massaged.</strong> If an area is undraped, only that area is uncovered, only while it's being worked on.</p>
+      <table class="consent-table">
+        <thead><tr><th>Area</th><th>Do not massage</th><th>Over the sheet only</th><th>OK to undrape</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="area">Breast / chest tissue</td>
+            <td><label><input type="radio" name="consentBreast" value="Do not massage" required> Do not massage</label></td>
+            <td><label><input type="radio" name="consentBreast" value="Over the sheet only"> Over the sheet only</label></td>
+            <td><label><input type="radio" name="consentBreast" value="OK to undrape"> OK to undrape</label></td>
+          </tr>
+          <tr>
+            <td class="area">Abdomen</td>
+            <td><label><input type="radio" name="consentAbdomen" value="Do not massage" required> Do not massage</label></td>
+            <td><label><input type="radio" name="consentAbdomen" value="Over the sheet only"> Over the sheet only</label></td>
+            <td><label><input type="radio" name="consentAbdomen" value="OK to undrape"> OK to undrape</label></td>
+          </tr>
+          <tr>
+            <td class="area">Glutes</td>
+            <td><label><input type="radio" name="consentGlutes" value="Do not massage" required> Do not massage</label></td>
+            <td><label><input type="radio" name="consentGlutes" value="Over the sheet only"> Over the sheet only</label></td>
+            <td><label><input type="radio" name="consentGlutes" value="OK to undrape"> OK to undrape</label></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">I'll check in with you out loud before working on any of these areas. You can change or withdraw consent at any time, including during the session, and I'll stop right away.</p>
+
+      <h3>Comfort</h3>
+      <div class="row">
+        <div class="field"><label for="c-lotion">Oil or lotion</label>
+          <select id="c-lotion" name="lotion"><option value="">No preference</option><option>Unscented only</option><option>Light scent is fine</option><option>As little as possible</option></select></div>
+        <div class="field"><label for="c-talk">Talking during the session</label>
+          <select id="c-talk" name="conversation"><option value="">No preference</option><option>Mostly quiet</option><option>Happy to chat</option></select></div>
+      </div>
+      <div class="field"><label for="c-home">Anything I should know about your home <span class="hint">Stairs, pets, parking, gate codes. You can also share this privately when we confirm.</span></label><textarea id="c-home" name="homeNotes"></textarea></div>
+
+      <div class="signature">
+        <div class="row">
+          <div class="field"><label for="s-name">Full name</label><input type="text" id="s-name" name="prefName" autocomplete="name" required></div>
+          <div class="field"><label for="s-date">Date</label><input type="date" id="s-date" name="prefDate" required></div>
+        </div>
+        <div class="field"><label for="s-guardian">Parent or guardian name <span class="hint">Only if the client is under 18</span></label><input type="text" id="s-guardian" name="prefGuardian"></div>
+        <label class="check"><input type="checkbox" name="prefSigned" value="yes" required> I give the consent described above. Typing my name serves as my signature.</label>
+      </div>
+
+      <p class="error-msg hidden" id="submit-error" role="alert"></p>
+      <div class="step-nav"><button type="button" class="btn secondary" data-back>Back</button><button type="submit" class="btn" id="submit-btn">Submit forms</button></div>
+    </fieldset>
+  </form>
+
+  <section class="card hidden" id="done" role="status">
+    <h2>Thank you!</h2>
+    <p>Your forms were sent securely. I'll review them before your appointment and follow up if I have any questions.</p>
+    <p>See you soon,<br>Loki</p>
+  </section>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    Massage For Motion LLC · Loki, LMT · <a href="mailto:loki.for.motion@gmail.com">loki.for.motion@gmail.com</a><br>
+    <a href="privacy.html">Consumer Health Data Privacy Policy</a> · <a href="intake.html">Client intake forms</a>
+  </div>
+</footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/intake.js"></script>
+</body>
+</html>

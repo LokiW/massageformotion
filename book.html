@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a Massage</title>
+  <meta name="description" content="Book a mobile massage with Massage For Motion in Seattle, Quilcene, Port Townsend, Poulsbo, or Sequim.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Massage For Motion</a>
+    <nav aria-label="Main"><a href="services.html">Services</a><a href="rates.html">Rates</a><a href="locations.html">Locations</a><a href="about.html">About</a><a class="btn" href="book.html">Book</a></nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+<h1>Book a massage</h1>
+<p class="lede">Pick your area and session, then choose a time. I'll come to you.</p>
+
+<form id="booking" novalidate>
+  <div class="hp" aria-hidden="true"><label>Leave blank <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+  <section class="card">
+    <h2>1. Where are you?</h2>
+    <div class="choices" id="locations" role="group" aria-label="Area"></div>
+    <p class="hint" id="location-days"></p>
+  </section>
+
+  <section class="card">
+    <h2>2. Who's getting a massage?</h2>
+    <p class="hint">Booking for more than one person in your home? Add them here. Back-to-back household massages are $20 off each.</p>
+    <div id="people"></div>
+    <div class="actions">
+      <button type="button" class="btn secondary" id="add-person">+ Add someone in my household</button>
+    </div>
+    <label class="check"><input type="checkbox" name="ownTable" id="own-table"> I have my own massage table you can use ($70 off each massage)</label>
+    <div class="summary" id="price-summary" aria-live="polite"></div>
+  </section>
+
+  <section class="card">
+    <h2>3. Pick a time</h2>
+    <div id="slots"><p class="loading">Choose your area above to see available times.</p></div>
+  </section>
+
+  <section class="card">
+    <h2>4. Your details</h2>
+    <div class="row">
+      <div class="field"><label for="b-name">Your name</label><input type="text" id="b-name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="b-phone">Phone</label><input type="tel" id="b-phone" name="phone" autocomplete="tel" required></div>
+    </div>
+    <div class="field"><label for="b-email">Email</label><input type="email" id="b-email" name="email" autocomplete="email" required></div>
+    <div class="field"><label for="b-street">Street address</label><input type="text" id="b-street" name="street" autocomplete="street-address" required></div>
+    <div class="row">
+      <div class="field"><label for="b-city">City</label><input type="text" id="b-city" name="city" autocomplete="address-level2" required></div>
+      <div class="field"><label for="b-zip">ZIP</label><input type="text" id="b-zip" name="zip" autocomplete="postal-code" inputmode="numeric" required></div>
+    </div>
+    <div class="field"><label for="b-access">Getting in <span class="hint">Stairs, pets, parking, gate codes</span></label><textarea id="b-access" name="access"></textarea></div>
+    <div class="field">
+      <span class="label">Have you had a massage with me before?</span>
+      <label class="radio"><input type="radio" name="clientType" value="new" required> No, I'm new</label>
+      <label class="radio"><input type="radio" name="clientType" value="returning"> Yes, I'm a returning client</label>
+    </div>
+    <div class="field"><label for="b-ref">Who referred you? <span class="hint">Optional. They'll get $10 off their next massage.</span></label><input type="text" id="b-ref" name="referredBy"></div>
+    <div class="field"><label for="b-notes">Anything else I should know?</label><textarea id="b-notes" name="notes"></textarea></div>
+
+    <label class="check"><input type="checkbox" name="privacyConsent" value="yes" required> I consent to Massage For Motion storing my booking details, including my address, privately in order to schedule and travel to my appointment, as described in the <a href="privacy.html">privacy policy</a>.</label>
+    <p class="hint">Prefer not to book online? <a href="mailto:loki.for.motion@gmail.com">Email me</a> instead.</p>
+
+    <p class="error-msg hidden" id="book-error" role="alert"></p>
+    <div class="actions"><button type="submit" class="btn" id="book-btn">Request this time</button></div>
+  </section>
+</form>
+
+<section class="card hidden" id="booked" role="status">
+  <h2>You're booked!</h2>
+  <div id="booked-details"></div>
+  <p>A confirmation email is on its way. To reschedule or cancel, just reply to it.</p>
+  <p id="booked-intake" class="note hidden"><strong>New client?</strong> Please fill out the <a href="intake.html">intake forms</a> before your appointment. Everyone in your household getting a massage needs their own.</p>
+</section>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    Massage For Motion LLC · Loki, LMT · <a href="mailto:loki.for.motion@gmail.com">loki.for.motion@gmail.com</a><br>
+    <a href="privacy.html">Consumer Health Data Privacy Policy</a> · <a href="intake.html">Client intake forms</a>
+  </div>
+</footer>
+<script src="assets/config.js"></script>
+<script src="assets/booking.js"></script>
+</body>
+</html>
