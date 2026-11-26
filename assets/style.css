@@ -180,7 +180,7 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); ou
   textarea { border: 1px solid #000; min-height: 5em; }
   select { appearance: none; }
   .consent-table tr, .field, .agree-list li, .check, .radio { break-inside: avoid; }
-  /* Pack the paper forms tightly. Firefox won't split grids across pages, so use columns/flex instead. */
+  /* Pack the paper forms tightly. Firefox splits grids and multi-column blocks badly across pages, so avoid them in print. */
   body { font-size: 10.5pt; line-height: 1.35; }
   h2 { font-size: 15pt; margin-bottom: 4px; }
   h3 { font-size: 11.5pt; margin: 12px 0 4px; break-after: avoid; }
@@ -188,7 +188,10 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); ou
   .field { margin: 6px 0; }
   .check, .radio { margin: 3px 0; }
   .check input, .radio input { margin-top: 2px; width: 13px; height: 13px; }
-  .checks-grid { display: block; columns: 2; column-gap: 24px; }
+  /* Inline items flow like lines of text, which every browser splits across pages cleanly
+     (Firefox spills the last item of a multi-column block onto its own page). */
+  .checks-grid { display: block; }
+  .checks-grid .check { display: inline-flex; width: 49%; vertical-align: top; padding-right: 12px; }
   .row { display: flex; gap: 16px; }
   .row > * { flex: 1; }
   textarea { min-height: 3.2em; }
