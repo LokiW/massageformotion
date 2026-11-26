@@ -131,15 +131,23 @@
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(collect()),
       });
-      const result = await res.json();
-      if (!result.ok) throw new Error(result.error || 'not saved');
+      let result;
+      try {
+        result = await res.json();
+      } catch (parseErr) {
+        throw new Error('The form service sent an unexpected reply (HTTP ' + res.status + ').');
+      }
+      if (!result.ok) throw new Error('The form service reported: ' + (result.error || 'unknown error') + '.');
       form.reset();
       form.classList.add('hidden');
       document.querySelector('.intro-card').classList.add('hidden');
       document.getElementById('done').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
-      errorEl.textContent = 'Your forms were not saved. Please check your connection and try again, or email loki.for.motion@gmail.com.';
+      // Show the specific reason so problems can be diagnosed. Network failures surface as a TypeError.
+      const detail = err instanceof TypeError ? 'Couldn\'t reach the form service.' : err.message;
+      errorEl.textContent = 'Your forms were not saved. ' + detail + ' Please try again, or email loki.for.motion@gmail.com.';
+      console.error('Intake submit failed:', err);
       errorEl.classList.remove('hidden');
       submitBtn.disabled = false;
       submitBtn.textContent = 'Submit forms';
