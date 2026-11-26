@@ -66,6 +66,31 @@
     cb.addEventListener('change', () => target.classList.toggle('hidden', !cb.checked));
   });
 
+  // "Have I submitted before?" Needs email AND date of birth, so an email alone reveals nothing.
+  const stResult = document.getElementById('st-result');
+  document.getElementById('st-check').addEventListener('click', async () => {
+    const email = document.getElementById('st-email').value.trim();
+    const dob = document.getElementById('st-dob').value;
+    const endpoint = window.MFM_CONFIG && window.MFM_CONFIG.scriptUrl;
+    if (!email || !dob) { stResult.textContent = 'Please enter both your email and date of birth.'; return; }
+    if (!endpoint) { stResult.textContent = 'Online forms are not connected yet.'; return; }
+    stResult.textContent = 'Checking…';
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ type: 'intakeStatus', email: email, dob: dob }),
+      });
+      const r = await res.json();
+      if (!r.ok) throw new Error(r.error);
+      stResult.textContent = r.found
+        ? 'Yes. Your forms were last submitted on ' + r.last + '. If nothing has changed, you\'re all set. Otherwise, fill them out again below.'
+        : 'I don\'t see forms for that email and date of birth. Please fill them out below.';
+    } catch (err) {
+      stResult.textContent = 'Couldn\'t check right now. If you\'re not sure, it\'s always fine to fill them out again.';
+    }
+  });
+
   document.getElementById('print-link').addEventListener('click', e => {
     e.preventDefault();
     window.print();
@@ -100,21 +125,21 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
     try {
-      // Google Apps Script web apps don't send CORS headers, so the response is opaque.
-      // text/plain avoids a preflight request; the script parses the JSON body.
-      await fetch(endpoint, {
+      // text/plain avoids a CORS preflight; the script parses the JSON body and replies with {ok, error}.
+      const res = await fetch(endpoint, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(collect()),
       });
+      const result = await res.json();
+      if (!result.ok) throw new Error(result.error || 'not saved');
       form.reset();
       form.classList.add('hidden');
       document.querySelector('.intro-card').classList.add('hidden');
       document.getElementById('done').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
-      errorEl.textContent = 'Something went wrong sending your forms. Please check your connection and try again, or email loki.for.motion@gmail.com.';
+      errorEl.textContent = 'Your forms were not saved. Please check your connection and try again, or email loki.for.motion@gmail.com.';
       errorEl.classList.remove('hidden');
       submitBtn.disabled = false;
       submitBtn.textContent = 'Submit forms';
