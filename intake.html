@@ -6,12 +6,15 @@
   <title>Client Intake Forms</title>
   <meta name="description" content="New client intake forms for Massage For Motion: health data consent, treatment consent, health history, and treatment preferences.">
   <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html">Massage For Motion</a>
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="40" height="40">Massage For Motion</a>
     <nav aria-label="Main"><a href="services.html">Services</a><a href="rates.html">Rates</a><a href="locations.html">Locations</a><a href="about.html">About</a><a class="btn" href="book.html">Book</a></nav>
   </div>
 </header>
@@ -28,6 +31,15 @@
     <h1>New client forms</h1>
     <p class="lede">Four short forms help me make sure massage is safe for you and that your session matches what you want. Plan on about 10 minutes.</p>
     <p>Prefer paper? Choose that option in step 1 and nothing will be sent. I'll bring printed forms to your appointment. You can also <a href="#" id="print-link">print blank forms</a>.</p>
+    <div class="note" id="status-box">
+      <p style="margin-top:0"><strong>Filled these out before?</strong> You only need to again if something has changed, such as your health, medications, pregnancy, or which areas you're comfortable having massaged. Every submission is saved, and I always use your newest answers.</p>
+      <div class="row">
+        <div class="field"><label for="st-email">Email</label><input type="email" id="st-email" autocomplete="email"></div>
+        <div class="field"><label for="st-dob">Date of birth</label><input type="date" id="st-dob" autocomplete="bday"></div>
+      </div>
+      <button type="button" class="btn secondary" id="st-check">Check if I've submitted</button>
+      <p id="st-result" role="status" aria-live="polite" style="margin-bottom:0"></p>
+    </div>
     <ol class="progress" id="progress" aria-label="Form progress">
       <li data-step="1">1. Health data consent</li>
       <li data-step="2">2. Consent to treatment</li>
