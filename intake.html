@@ -41,8 +41,8 @@
     <div class="hp" aria-hidden="true"><label>Leave blank <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
     <!-- ===================== 1. MHMDA CONSENT ===================== -->
-    <fieldset class="step card" data-step="1">
-      <legend><h2>1. Consent to collect consumer health data</h2></legend>
+    <section class="step card" data-step="1">
+      <h2>1. Consent to collect consumer health data</h2>
       <p class="hint">Required by Washington's My Health My Data Act. Full details are in my <a href="privacy.html">Consumer Health Data Privacy Policy</a>.</p>
 
       <h3>What I collect</h3>
@@ -77,11 +77,11 @@
       </div>
 
       <div class="step-nav"><span></span><button type="button" class="btn" data-next>Continue</button></div>
-    </fieldset>
+    </section>
 
     <!-- ===================== 2. TREATMENT CONSENT ===================== -->
-    <fieldset class="step card hidden" data-step="2">
-      <legend><h2>2. Informed consent &amp; release</h2></legend>
+    <section class="step card hidden" data-step="2">
+      <h2>2. Informed consent &amp; release</h2>
       <p class="hint">Please check each statement.</p>
       <ul class="agree-list">
         <li><label class="check"><input type="checkbox" name="tc_consent" value="yes" required> I give permission to receive massage from Loki, LMT, of Massage For Motion LLC.</label></li>
@@ -106,11 +106,11 @@
       </div>
 
       <div class="step-nav"><button type="button" class="btn secondary" data-back>Back</button><button type="button" class="btn" data-next>Continue</button></div>
-    </fieldset>
+    </section>
 
     <!-- ===================== 3. HEALTH HISTORY ===================== -->
-    <fieldset class="step card hidden" data-step="3">
-      <legend><h2>3. Health history</h2></legend>
+    <section class="step card hidden" data-step="3">
+      <h2>3. Health history</h2>
       <p class="hint">This tells me whether to adjust or avoid certain techniques. Answer as fully as you're comfortable with.</p>
 
       <h3>About you</h3>
@@ -223,11 +223,11 @@
       </div>
 
       <div class="step-nav"><button type="button" class="btn secondary" data-back>Back</button><button type="button" class="btn" data-next>Continue</button></div>
-    </fieldset>
+    </section>
 
     <!-- ===================== 4. PREFERENCES & AREA CONSENT ===================== -->
-    <fieldset class="step card hidden" data-step="4">
-      <legend><h2>4. Treatment preferences &amp; consent for specific areas</h2></legend>
+    <section class="step card hidden" data-step="4">
+      <h2>4. Treatment preferences &amp; consent for specific areas</h2>
 
       <h3>Goals</h3>
       <div class="field"><label for="g-goals">What would you like to get out of massage?</label><textarea id="g-goals" name="goals" placeholder="e.g. recover from shoulder strain, loosen up for training, relieve desk-work neck tension"></textarea></div>
@@ -311,7 +311,7 @@
 
       <p class="error-msg hidden" id="submit-error" role="alert"></p>
       <div class="step-nav"><button type="button" class="btn secondary" data-back>Back</button><button type="submit" class="btn" id="submit-btn">Submit forms</button></div>
-    </fieldset>
+    </section>
   </form>
 
   <section class="card hidden" id="done" role="status">

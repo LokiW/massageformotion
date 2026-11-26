@@ -47,21 +47,27 @@
 
   <section class="card">
     <h2>4. Your details</h2>
+    <div class="field">
+      <span class="label">Have you had a massage with me before?</span>
+      <label class="radio"><input type="radio" name="clientType" value="new" required> No, I'm new</label>
+      <label class="radio"><input type="radio" name="clientType" value="returning"> Yes, I'm a returning client</label>
+    </div>
     <div class="row">
       <div class="field"><label for="b-name">Your name</label><input type="text" id="b-name" name="name" autocomplete="name" required></div>
       <div class="field"><label for="b-phone">Phone</label><input type="tel" id="b-phone" name="phone" autocomplete="tel" required></div>
     </div>
     <div class="field"><label for="b-email">Email</label><input type="email" id="b-email" name="email" autocomplete="email" required></div>
-    <div class="field"><label for="b-street">Street address</label><input type="text" id="b-street" name="street" autocomplete="street-address" required></div>
-    <div class="row">
-      <div class="field"><label for="b-city">City</label><input type="text" id="b-city" name="city" autocomplete="address-level2" required></div>
-      <div class="field"><label for="b-zip">ZIP</label><input type="text" id="b-zip" name="zip" autocomplete="postal-code" inputmode="numeric" required></div>
+    <div class="hidden" id="same-address-box">
+      <label class="check"><input type="checkbox" name="useAddressOnFile" id="same-address" value="yes" checked> Same address and access details as my last booking</label>
+      <p class="hint">Use the same email and phone as last time so I can find it. For your privacy, your address isn't shown here.</p>
     </div>
-    <div class="field"><label for="b-access">Getting in <span class="hint">Stairs, pets, parking, gate codes</span></label><textarea id="b-access" name="access"></textarea></div>
-    <div class="field">
-      <span class="label">Have you had a massage with me before?</span>
-      <label class="radio"><input type="radio" name="clientType" value="new" required> No, I'm new</label>
-      <label class="radio"><input type="radio" name="clientType" value="returning"> Yes, I'm a returning client</label>
+    <div id="address-fields">
+      <div class="field"><label for="b-street">Street address</label><input type="text" id="b-street" name="street" autocomplete="street-address" required></div>
+      <div class="row">
+        <div class="field"><label for="b-city">City</label><input type="text" id="b-city" name="city" autocomplete="address-level2" required></div>
+        <div class="field"><label for="b-zip">ZIP</label><input type="text" id="b-zip" name="zip" autocomplete="postal-code" inputmode="numeric" required></div>
+      </div>
+      <div class="field"><label for="b-access">Getting in <span class="hint">Stairs, pets, parking, gate codes</span></label><textarea id="b-access" name="access"></textarea></div>
     </div>
     <div class="field"><label for="b-ref">Who referred you? <span class="hint">Optional. They'll get $10 off their next massage.</span></label><input type="text" id="b-ref" name="referredBy"></div>
     <div class="field"><label for="b-notes">Anything else I should know?</label><textarea id="b-notes" name="notes"></textarea></div>

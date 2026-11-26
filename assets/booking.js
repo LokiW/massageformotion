@@ -163,6 +163,19 @@
     draw();
   }
 
+  // ---------- step 4: returning clients can reuse the address from their last booking.
+  // The address is looked up by the script (matching email + phone) and never sent to the browser.
+  const sameAddressBox = document.getElementById('same-address-box');
+  const sameAddress = document.getElementById('same-address');
+  const addressFields = document.getElementById('address-fields');
+  const usingAddressOnFile = () => form.elements.clientType.value === 'returning' && sameAddress.checked;
+  function updateAddressFields() {
+    sameAddressBox.classList.toggle('hidden', form.elements.clientType.value !== 'returning');
+    addressFields.classList.toggle('hidden', usingAddressOnFile());
+  }
+  form.querySelectorAll('input[name="clientType"]').forEach(r => r.addEventListener('change', updateAddressFields));
+  sameAddress.addEventListener('change', updateAddressFields);
+
   // ---------- step 4: submit
   function showError(msg) {
     errorEl.innerHTML = msg;
@@ -175,7 +188,7 @@
     if (!state.location) return showError('Please choose your area (step 1).');
     if (!state.start) return showError('Please pick a time (step 3).');
     for (const f of form.querySelectorAll('input, textarea')) {
-      if (f.name !== 'website' && !f.checkValidity()) { f.reportValidity(); return; }
+      if (f.name !== 'website' && !f.closest('.hidden') && !f.checkValidity()) { f.reportValidity(); return; }
     }
     if (!API) return showError('Online booking isn\'t connected yet. Please <a href="mailto:' + EMAIL + '">email me</a>.');
 
@@ -190,6 +203,8 @@
     };
     ['name', 'phone', 'email', 'street', 'city', 'zip', 'access', 'clientType', 'referredBy', 'notes', 'privacyConsent', 'website']
       .forEach(k => { payload[k] = fd.get(k) || ''; });
+    payload.useAddressOnFile = usingAddressOnFile() ? 'yes' : '';
+    if (payload.useAddressOnFile) { payload.street = payload.city = payload.zip = payload.access = ''; }
 
     bookBtn.disabled = true;
     bookBtn.textContent = 'Booking…';
@@ -198,7 +213,14 @@
       const data = await res.json();
       if (!data.ok) {
         showError(esc(data.error || 'Something went wrong.'));
-        loadSlots();
+        if (data.needAddress) {
+          // No matching past booking: keep their chosen time and ask for the address instead.
+          sameAddress.checked = false;
+          updateAddressFields();
+          document.getElementById('b-street').focus();
+        } else {
+          loadSlots();
+        }
         return;
       }
       document.getElementById('booked-details').innerHTML =
